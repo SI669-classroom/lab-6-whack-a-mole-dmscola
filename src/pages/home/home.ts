@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { MoleHole } from '../../models/button-model';
 import { Observable } from 'rxjs/Observable';
 
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -16,20 +17,26 @@ export class HomePage {
   timeLeft: number = 0;
   timerObserver: any;
   score: 0;
-
+  moleUpdate: any;
+  moleObserver: any;
 
   constructor(public navCtrl: NavController) {
 
-    /**
-     * Create an observer to be passed to the new MoleHoles
-     */
 
-    /**
-     * Subscribe to the observer created above to update the score
-     */
+     this.moleUpdate = Observable.create(observer => {
+       this.moleObserver = observer;
+     });
+
+
+
+
+     this.moleUpdate.subscribe((num) => {
+      this.score += (num)
+     });
+
 
     for(let i = 0; i<9; i++) {
-      this.moleHoles.push(new MoleHole(i, /*Pass the observer created to the new MoleHoles*/))
+      this.moleHoles.push(new MoleHole(i, this.moleObserver))
     }
 
     let timerUpdate = Observable.create(observer => {
@@ -99,10 +106,9 @@ export class HomePage {
 
   stateToClass(state: number) {
     switch(state) {
-      /**
-       * What should this function do?
-       * Hint: Look in the home.scss file
-       */
+      case 0: return('hid');
+      case 1: return('out')
+      case 2: return('hit')
     }
 }
 

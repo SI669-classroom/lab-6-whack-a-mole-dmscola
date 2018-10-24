@@ -1,6 +1,6 @@
+
 <!--
   Generated template for the LeaderboardPage page.
-
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
@@ -14,12 +14,11 @@
 
 
 <ion-content padding>
-<h1>You score is {{score}}</h1>
+<h1>Your score is {{score}}</h1>
+
 <h2>Leaderboard</h2>
-<p>Something's wrong with the date :(</p>
 <ion-item *ngFor="let score of scoreList">
-  <!-- This is supposed to convert date into human readable format -->
-  <!-- But it isn't working, what's wrong -->
-  <span>{{score.score}}</span> : <span>{{score.score | date : 'long'}}</span>
+
+  <span>{{score.score}}</span>: <span>{{score.time | date : 'long'}}</span>
 </ion-item>
 </ion-content>

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      whack-a-mole
+      Whack-a-mole
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -10,7 +10,7 @@
   <ion-grid>
     <ion-row>
       <ion-col col-4 *ngFor="let hole of moleHoles">
-        <button ion-button 
+        <button ion-button
           [class]="stateToClass(hole.moleState)"
           (click)="hit(hole)"></button>
       </ion-col>
